@@ -2,101 +2,26 @@
   <v-app>
     <v-content>
       <div id="app">
-        <v-container grid-list-xl>
-          <v-layout row xs12 class="mb-4">
-                    <div class="yeh text-xs-center mb-4 elevation-3 display-3 p-4 font-weight-bold py-2 px-4">Descubre el CCD</div>
+        <v-container grid-list-lg>
+          <v-layout row wrap>
+            <v-flex
+              xs-12
+            >
+            <div class="yeh text-xs-center mb-4 elevation-3 display-3 p-4 font-weight-bold py-2 px-4">
+              Áreas</div></v-flex>
           </v-layout>
-          <v-layout row>
+          <v-layout row wrap>
             <v-flex xs12 sm6>
-              <v-card hover="true" ripple="true">
-                <div class="top headline">Laboratorio de VR</div>
-                <v-img src="https://i.imgur.com/E3vh2qd.jpg" height="200px"></v-img>
-
-                <v-card-title>
-                  <div class="headline">Descubre el poder de realidades mixtas</div>
-                  <span
-                    class="grey--text"
-                  >El laboratorio de inmersión y realidades mixtas es un espacio dedicado a la exploración de estímulos multisensoriales para construir nuevas posibilidades de percepción y acción, así como en la reflexión desde un sentido crítico sobre el estado actual y el futuro de los medios inmersivos. </span>
-                </v-card-title>
-
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn flat @click="show = !show">
-                    Ver Más
-                    <v-icon right dark>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
-                  </v-btn>
-                </v-card-actions>
-
-                <v-slide-y-transition>
-                  <v-container fluid grid-list-md v-show="show" grey lighten-4>
-                    <div class="yeh headline text-xs-center mb-4 elevation-3">Miembros</div>
-
-                    <v-layout row wrap color="red">
-                      <v-flex
-                        v-for="card in cards"
-                        :key="card.title"
-                        v-bind="{ [`xs${card.flex}`]: true }"
-                      >
-                        <v-card>
-                          <v-img :src="card.src" height="250"></v-img>
-
-                          <v-card-text>
-                            <span class="font-weight-medium">Nombre Apellido</span>
-                            <span class="grey--text d-block font-weight-medium">Rol</span>
-                          </v-card-text>
-                        </v-card>
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
-                </v-slide-y-transition>
-              </v-card>
+              <Area/>
+              <Area2 class="mt-4"/>
+              <Area3 class="mt-4"/>
+              <Area4 class="mt-4"/>
             </v-flex>
-
             <v-flex xs12 sm6>
-              <v-card hover="true" ripple="true">
-                <div class="top headline">Laboratorio de VR</div>
-                <v-img src="https://i.imgur.com/E3vh2qd.jpg" height="200px"></v-img>
-
-                <v-card-title>
-                  <div class="headline">Descubre el poder de realidades mixtas</div>
-                  <span
-                    class="grey--text"
-                  >El laboratorio de inmersión y realidades mixtas es un espacio dedicado a la exploración de estímulos multisensoriales para construir nuevas posibilidades de percepción y acción, así como en la reflexión desde un sentido crítico sobre el estado actual y el futuro de los medios inmersivos. </span>
-                </v-card-title>
-
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn flat @click="show = !show">
-                    Ver Más
-                    <v-icon right dark>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
-                  </v-btn>
-                </v-card-actions>
-
-                <v-slide-y-transition>
-                  <v-container fluid grid-list-md v-show="show" grey lighten-4>
-                    <div class="yeh headline text-xs-center mb-4 elevation-3">Miembros</div>
-
-                    <v-layout row wrap color="red">
-                      <v-flex
-                        v-for="card in cards"
-                        :key="card.title"
-                        v-bind="{ [`xs${card.flex}`]: true }"
-                      >
-                        <v-card>
-                          <v-img :src="card.src" height="250"></v-img>
-
-                          <v-card-text>
-                            <span class="font-weight-medium">Nombre Apellido</span>
-                            <span class="grey--text d-block font-weight-medium">Rol</span>
-                          </v-card-text>
-                        </v-card>
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
-                </v-slide-y-transition>
-              </v-card>
+              <Area5 />
+              <Area6 class="mt-4" />
+              <Area7 class="mt-4" />
             </v-flex>
-
           </v-layout>
         </v-container>
       </div>
@@ -104,7 +29,7 @@
   </v-app>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .top {
   padding: 5px 10px;
   position: absolute;
@@ -117,6 +42,7 @@
   border-bottom: 2px solid white;
   border-radius: 1px;
   // left: -45px;
+  text-transform:uppercase;
 }
 .yeh {
   z-index: 7;
@@ -129,39 +55,40 @@
   margin: 0 auto;
   margin-bottom: 0px;
   letter-spacing: 1px !important;
+  max-width:420px;
+}
+
+.headline {
+  margin-bottom:.35em;
 }
 </style>
 
 
+
 <script>
+import Area from "@/components/Area.vue";
+import Area2 from "@/components/Area2.vue";
+import Area3 from "@/components/Area3.vue";
+import Area4 from "@/components/Area4.vue";
+import Area5 from "@/components/Area5.vue";
+import Area6 from "@/components/Area6.vue";
+import Area7 from "@/components/Area7.vue";
+
 export default {
-  data: () => ({
-    cards: [
-      {
-        title: "Nombre Apellido",
-        src:
-          "https://www.centroculturadigital.mx/imgs/areas/marizleth-martinez.jpg",
-        flex: 6
-      },
-      {
-        title: "Nombre Apellido",
-        src:
-          "https://www.centroculturadigital.mx/imgs/areas/hector-guerrero.jpg",
-        flex: 6
-      },
-      {
-        title: "Nombre Apellido",
-        src:
-          "https://www.centroculturadigital.mx/imgs/areas/jacinto-quesnel.jpg",
-        flex: 6
-      },
-      {
-        title: "Nombre Apellido",
-        src: "https://www.centroculturadigital.mx/imgs/areas/diana-limon.jpg",
-        flex: 6
-      }
-    ],
-    show: false
-  })
+  name: "Areas",
+  components: {
+    Area,
+    Area2,
+    Area3,
+    Area4,
+    Area5,
+    Area6,
+    Area7
+  },
+  data: function() {
+    return {
+      areas: [{ id: 1, title: "yea boi" }]
+    };
+  }
 };
 </script>
